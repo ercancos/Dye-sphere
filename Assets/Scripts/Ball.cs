@@ -12,6 +12,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     private Rigidbody _rb;
+    private Color _color = new Color(1f, 0.3150943f, 0.3150943f);
 
     public Rigidbody GetBallRB()
     {
@@ -30,9 +31,9 @@ public class Ball : MonoBehaviour
     {
         if (collide.gameObject.tag == "Ground")
         {
-            if (collide.gameObject.GetComponent<MeshRenderer>().material.color != Color.red)
+            if (collide.gameObject.GetComponent<MeshRenderer>().material.color != _color)
             {
-                collide.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                collide.gameObject.GetComponent<MeshRenderer>().material.color = _color;
             }
         }
     }
