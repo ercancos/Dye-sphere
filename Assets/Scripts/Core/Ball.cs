@@ -11,19 +11,29 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Ball : MonoBehaviour
 {
+    #region Variables
+
     private Rigidbody _rb;
     private Color _color = new Color(1f, 0.3150943f, 0.3150943f);
+
+    #endregion
+
 
     public Rigidbody GetBallRB()
     {
         return _rb;
     }
 
+    private void OnEnable()
+    {
+        Movement.MovementStarted += Constraints;
+    }
+
+
     // Start is called before the first frame update
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        Constraints();
     }
 
 
@@ -42,5 +52,11 @@ public class Ball : MonoBehaviour
     private void Constraints()
     {
         _rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+    }
+
+
+    private void OnDestroy()
+    {
+        Movement.MovementStarted += Constraints;
     }
 }

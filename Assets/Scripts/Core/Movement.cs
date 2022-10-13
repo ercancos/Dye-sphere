@@ -22,7 +22,12 @@ public class Movement : MonoBehaviour
     [HideInInspector]
     public MovementStatus movementStatus;
 
+    public delegate void MovementAction();
+    public static event MovementAction MovementStarted;
+
     [SerializeField] private float moveSpeed;
+
+    private bool isMovementStart = false;
 
     private Vector2 _firstPos;
     private Vector2 _secondPos;
@@ -33,10 +38,12 @@ public class Movement : MonoBehaviour
 
     #endregion
 
+
     private void Start()
     {
         _scriptInstance = GetComponent<Ball>();
         _rb = _scriptInstance.GetBallRB();
+        movementStatus = MovementStatus.stationary;
     }
 
     private void Update()
@@ -50,6 +57,15 @@ public class Movement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if (!(isMovementStart))
+            {
+                isMovementStart = true;
+                if (MovementStarted != null)
+                {
+                    MovementStarted();
+                }
+            }
+
             _firstPos = new Vector2(mousePosition.x, mousePosition.y);
         }
         else if (Input.GetMouseButtonUp(0))

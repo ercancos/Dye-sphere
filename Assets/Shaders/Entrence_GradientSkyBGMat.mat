@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GradientSkyBGMat
+  m_Name: Entrence_GradientSkyBGMat
   m_Shader: {fileID: 4800000, guid: 74e67ad296e89c2429d92dcec299b3c1, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -61,7 +61,7 @@ Material:
     - _BottomColor: {r: 0.7075472, g: 0.1762193, b: 0.28375, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorA: {r: 0.8401747, g: 0.8490566, b: 0.14738339, a: 1}
-    - _ColorB: {r: 0.16747947, g: 0.8498954, b: 0.9150943, a: 1}
+    - _ColorB: {r: 0.75628334, g: 0.87420523, b: 0.8867924, a: 1}
     - _ColorC: {r: 0.8396226, g: 0.42297968, b: 0.64819217, a: 1}
     - _TopColor: {r: 0.13264506, g: 0.764151, b: 0.7449925, a: 0}
   m_BuildTextureStacks: []
