@@ -28,6 +28,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float moveSpeed;
 
     private bool isMovementStart = false;
+    private bool isLevelEnd = false;
 
     private Vector2 _firstPos;
     private Vector2 _secondPos;
@@ -38,6 +39,10 @@ public class Movement : MonoBehaviour
 
     #endregion
 
+    private void OnEnable()
+    {
+        GameManager.LevelCompleted += StopMovement;
+    }
 
     private void Start()
     {
@@ -48,7 +53,10 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        Swipe();
+        if (!(isLevelEnd))
+        {
+            Swipe();
+        }
     }
 
     private void Swipe()
@@ -87,7 +95,7 @@ public class Movement : MonoBehaviour
         }
         else if (_currentPos.y < 0 && _currentPos.x > -0.5f && _currentPos.x < 0.5f)
         {
-            //Back  Movement
+            //Backward Movement
             _rb.velocity = Vector3.back * moveSpeed;
         }
         else if (_currentPos.x > 0 && _currentPos.y > -0.5f && _currentPos.y < 0.5f)
@@ -102,4 +110,13 @@ public class Movement : MonoBehaviour
         }
     }
 
+    private void StopMovement()
+    {
+        isLevelEnd = true;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.LevelCompleted -= StopMovement;
+    }
 }

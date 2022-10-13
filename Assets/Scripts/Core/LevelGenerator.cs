@@ -32,8 +32,7 @@ public class LevelGenerator : MonoBehaviour
     #endregion
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         if (CheckStaticParameters())
             return;

@@ -13,6 +13,9 @@ public class Ball : MonoBehaviour
 {
     #region Variables
 
+    public delegate void DyeAction();
+    public static event DyeAction GroundPainted;
+
     private Rigidbody _rb;
     private Color _color = new Color(1f, 0.3150943f, 0.3150943f);
 
@@ -44,6 +47,10 @@ public class Ball : MonoBehaviour
             if (collide.gameObject.GetComponent<MeshRenderer>().material.color != _color)
             {
                 collide.gameObject.GetComponent<MeshRenderer>().material.color = _color;
+                if (GroundPainted != null)
+                {
+                    GroundPainted();
+                }
             }
         }
     }
@@ -57,6 +64,6 @@ public class Ball : MonoBehaviour
 
     private void OnDestroy()
     {
-        Movement.MovementStarted += Constraints;
+        Movement.MovementStarted -= Constraints;
     }
 }

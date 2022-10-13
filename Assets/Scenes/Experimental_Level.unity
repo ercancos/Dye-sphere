@@ -130,6 +130,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1745311958, guid: e7c067ad1663abc4893f5e277dd41b9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1642932583}
+    - target: {fileID: 1745311958, guid: e7c067ad1663abc4893f5e277dd41b9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906235582, guid: e7c067ad1663abc4893f5e277dd41b9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1642932583}
+    - target: {fileID: 1906235582, guid: e7c067ad1663abc4893f5e277dd41b9f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 8992522609258426697, guid: e7c067ad1663abc4893f5e277dd41b9f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -267,6 +283,11 @@ GameObject:
 --- !u!1 &268210297 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8992522609971424369, guid: e7c067ad1663abc4893f5e277dd41b9f, type: 3}
+  m_PrefabInstance: {fileID: 268210292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &572820870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 387903289, guid: e7c067ad1663abc4893f5e277dd41b9f, type: 3}
   m_PrefabInstance: {fileID: 268210292}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
@@ -529,6 +550,10 @@ PrefabInstance:
       propertyPath: mainMenuButton
       value: 
       objectReference: {fileID: 268210295}
+    - target: {fileID: 334106255635650931, guid: ec7c8040fbb22394a8c315b902875497, type: 3}
+      propertyPath: levelSuccessFrame
+      value: 
+      objectReference: {fileID: 572820870}
     - target: {fileID: 334106256899404292, guid: ec7c8040fbb22394a8c315b902875497, type: 3}
       propertyPath: m_RootOrder
       value: 6

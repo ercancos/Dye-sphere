@@ -17,6 +17,7 @@ public class Level_UIManager : MonoBehaviour
     [SerializeField] private GameObject mainMenuButton;
     [SerializeField] private GameObject pauseButton;
     [SerializeField] private GameObject pauseMenuBG;
+    [SerializeField] private GameObject levelSuccessFrame;
     #endregion
 
     public void SetStatePauseMenuFrame(bool isActive)
@@ -25,11 +26,16 @@ public class Level_UIManager : MonoBehaviour
         SetStatePauseMenuButtons(isActive);
     }
 
+    private void OnEnable()
+    {
+        GameManager.LevelCompleted += ActivateLevelSuccessFrame;
+    }
 
     private void Start()
     {
         SetStatePausebutton(true);
         SetStatePauseMenuButtons(false);
+        levelSuccessFrame.SetActive(false);
     }
 
     private void SetStatePauseMenuButtons(bool isActive)
@@ -45,4 +51,13 @@ public class Level_UIManager : MonoBehaviour
         pauseButton.SetActive(isActive);
     }
 
+    private void ActivateLevelSuccessFrame()
+    {
+        levelSuccessFrame.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.LevelCompleted -= ActivateLevelSuccessFrame;
+    }
 }
