@@ -12,16 +12,6 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     #region Variables
-
-    public enum MovementStatus
-    {
-        moving,
-        stationary
-    };
-
-    [HideInInspector]
-    public MovementStatus movementStatus;
-
     public delegate void MovementAction();
     public static event MovementAction MovementStarted;
 
@@ -48,18 +38,25 @@ public class Movement : MonoBehaviour
     {
         _scriptInstance = GetComponent<Ball>();
         _rb = _scriptInstance.GetBallRB();
-        movementStatus = MovementStatus.stationary;
     }
 
     private void Update()
     {
         if (!(isLevelEnd))
         {
-            Swipe();
+            DetectSwipe();
         }
     }
 
-    private void Swipe()
+    private void FixedUpdate()
+    {
+        if (!(isLevelEnd))
+        {
+            MoveBall();
+        }
+    }
+
+    private void DetectSwipe()
     {
         Vector3 mousePosition = Input.mousePosition;
 
@@ -81,13 +78,16 @@ public class Movement : MonoBehaviour
             _secondPos = new Vector2(mousePosition.x, mousePosition.y);
 
             _currentPos = new Vector2(
-                _secondPos.x - _firstPos.x,
-                _secondPos.y - _firstPos.y
+                (_secondPos.x - _firstPos.x),
+                (_secondPos.y - _firstPos.y)
             );
 
             _currentPos.Normalize();
         }
+    }
 
+    private void MoveBall()
+    {
         if (_currentPos.y > 0 && _currentPos.x > -0.5f && _currentPos.x < 0.5f)
         {
             //Forward Movement
